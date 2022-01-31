@@ -1,0 +1,292 @@
+@import "./reset.css";
+@import "./preloader.css";
+@import "../atropos/atropos.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@font-face {
+  font-family: SFDigital;
+  src: url(../resources/SFDigitalReadout-Heavy.ttf);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: auto;
+  color:#ddd;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  overflow: overlay;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+  align-items: center;
+  background: #1a1a1a;
+}
+
+.header, .footer {
+  max-width: 100%;
+}
+
+header, nav, #articleGrid, footer {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header, section, .atropos, footer {
+  position: relative;
+}
+
+.dim, #hero.dim, .nighttime #hero.dim {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff2;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0005;
+}
+
+/*--- Header ---------------------------------------------------------*/
+
+.header {
+  background: none;
+  padding-bottom: 0px;
+}
+
+header {
+  width: 100%;
+  height: 360px;
+}
+
+#hero {
+  position: fixed;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  opacity: 0.8;
+  transform: translate3d(0,0,0) scale(1.25);
+  z-index: -1;
+}
+
+.nighttime .header::before { /* Makes text more legible */
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 360px;
+  top: 0;
+  left: 0;
+  background-image: radial-gradient(#0005, #0000);
+}
+
+body.loaded #hero {
+  transform: scale(1);
+  transition: 6.5s transform;
+}
+
+header span {
+  position: absolute;
+  display: block;
+  top: 70px;
+  width: 100%;
+  padding: 30px;
+  /* background: radial-gradient(#14090122, #14090111, #0000, #0000, #0000); */ /* In case drop shadow is needed */
+}
+
+header img {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  width: 70%;
+}
+
+header p {
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 0 0 4.5rem #000;
+}
+
+
+/*--- Juicy Bits -----------------------------------------------------*/
+
+#articleGrid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 5.5rem 30px 0 30px;
+  max-width: 930px;
+  justify-content: flex-start;
+}
+
+.atropos {
+  max-width: 270px;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 10px 3rem 10px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.atropos,
+.atropos-scale,
+.atropos-rotate,
+.atropos-inner,
+.atropos img {
+  border-radius: 0.2rem;
+}
+
+.tags, .location.hide {
+  display: none;
+}
+
+.articleImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*--- Footer ---------------------------------------------------------*/
+
+.footer {
+  margin: 0;
+  padding: 60px;
+  background: #222;
+  text-align: center;
+  font-size: 12px;
+  line-height: 36px;
+}
+
+.footer a { font-weight: 600; }
+
+.footer p, .footer p a { color: #ddda; }
+
+/*--- Error  ---------------------------------------------------------*/
+
+#error {
+  min-height: 260px;
+  color: #ddda;
+}
+
+#error h1 {
+  font-size: 2em;
+  margin: 5rem auto 2rem auto;
+}
+
+/*--- Typography  ----------------------------------------------------*/
+
+.hidden { display: none; }
+
+a, i, .multiImgIcon:hover {
+  text-decoration: none;
+  color:#eee;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.500, 0.000, 0.500, 1.000); 
+  transition-timing-function: cubic-bezier(0.500, 0.000, 0.500, 1.000); 
+}
+
+a:hover, .content a:hover, i:hover { color: #aaa; }
+
+a:not([href]):hover {
+  color:#eee;
+  cursor: default;
+}
+
+p { line-height: 20px; }
+
+p::selection, b::selection {
+  background: #8885;
+  color:#fff;
+}
+
+b { font-weight: 600; color: #ccc; }
+
+::selection { background: none; }
+
+#scrolltotop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 12px;
+  transform: rotate(-90deg);
+}
+
+/*--- Audio ---------------------------------------------------*/
+
+#audiogroup {
+  position: fixed;
+  bottom: 32px;
+  left: 30px;
+  font-size: 12px;
+}
+
+#audiogroup.soundoff .fa-volume-down,
+#audiogroup .fa-volume-off {
+  display: block;
+}
+
+#audiogroup .fa-volume-down,
+#audiogroup.soundoff .fa-volume-off {
+  display: none;
+}
+
+/*--- Queries --------------------------------------------------------*/
+
+@media only screen and (min-width: 1220px) {
+  #articleGrid {
+    max-width: 1220px;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  #articleGrid {
+    max-width: 640px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #hero[src*=day] {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #articleGrid {
+    max-width: 350px;
+  }
+  header img {
+    margin: -1.25rem auto 1.5rem auto;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #hero {
+    max-height: 360px;
+  }
+}
