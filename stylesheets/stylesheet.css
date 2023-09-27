@@ -168,11 +168,11 @@ header p {
 
 /*--- Hovers ---------------------------------------------------------*/
 
-#blog .atropos-inner:hover::before, #fungi .atropos-inner:hover::before, #insects .atropos-inner:hover::before {
+#adventures .atropos-inner:hover::before, #blog .atropos-inner:hover::before, #fungi .atropos-inner:hover::before, #insects .atropos-inner:hover::before {
   opacity: 1;
 }
 
-#blog .atropos-inner::before, #fungi .atropos-inner::before, #insects .atropos-inner::before {
+#adventures .atropos-inner::before, #blog .atropos-inner::before, #fungi .atropos-inner::before, #insects .atropos-inner::before {
   content:'';
   display: flex;
   position: absolute;
@@ -191,8 +191,12 @@ header p {
   transition-timing-function: cubic-bezier(0.500, 0.000, 0.500, 1.000); 
 }
 
-#blog .atropos-inner::before {
+#adventures .atropos-inner::before {
   content:'Travel Log';
+}
+
+#blog .atropos-inner::before {
+  content:'Blog';
 }
 
 #fungi .atropos-inner::before {
